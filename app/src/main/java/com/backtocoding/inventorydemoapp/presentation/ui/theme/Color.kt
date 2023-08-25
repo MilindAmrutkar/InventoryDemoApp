@@ -1,4 +1,4 @@
-package com.backtocoding.inventorydemoapp.ui.theme
+package com.backtocoding.inventorydemoapp.presentation.ui.theme
 
 import androidx.compose.ui.graphics.Color
 
