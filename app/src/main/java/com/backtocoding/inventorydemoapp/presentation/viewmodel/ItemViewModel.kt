@@ -4,11 +4,15 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.backtocoding.inventorydemoapp.domain.entities.ItemEntity
 import com.backtocoding.inventorydemoapp.domain.usecases.FetchItemsUseCase
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
-class ItemViewModel(private val fetchItemsUseCase: FetchItemsUseCase) : ViewModel() {
+@HiltViewModel
+class ItemViewModel @Inject constructor(private val fetchItemsUseCase: FetchItemsUseCase) :
+    ViewModel() {
     private val _items = MutableStateFlow<List<ItemEntity>>(emptyList())
 
     val items: StateFlow<List<ItemEntity>> = _items

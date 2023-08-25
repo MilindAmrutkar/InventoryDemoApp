@@ -1,4 +1,7 @@
 package com.backtocoding.inventorydemoapp.domain.repository
 
-class ItemRepository {
+import com.backtocoding.inventorydemoapp.domain.entities.ItemEntity
+
+interface ItemRepository {
+    suspend fun fetchItems(): Result<List<ItemEntity>>
 }
