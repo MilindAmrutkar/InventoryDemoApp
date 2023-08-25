@@ -7,6 +7,7 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
@@ -17,10 +18,12 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import coil.compose.rememberAsyncImagePainter
+import com.backtocoding.inventorydemoapp.R
 import com.backtocoding.inventorydemoapp.domain.entities.ItemEntity
 
 @Composable
@@ -40,18 +43,22 @@ fun ItemRow(item: ItemEntity, modifier: Modifier = Modifier) {
             horizontalAlignment = Alignment.Start
         ) {
             Image(
-                painter = rememberAsyncImagePainter(model = item.imageUrl),
+                painter = rememberAsyncImagePainter(
+                    model = item.imageUrl,
+                    error = painterResource(id = R.drawable.ic_error)
+                ),
                 contentDescription = "Item image for ${item.itemName}",
                 contentScale = ContentScale.Crop,
                 modifier = Modifier
                     .height(100.dp)
                     .fillMaxWidth()
-                    .background(Color.Gray)
+                    .background(color = Color.Gray, shape = CircleShape)
                     .clip(RoundedCornerShape(4.dp))
             )
             Spacer(modifier = Modifier.height(8.dp))
             Text(text = item.itemName, color = Color.Black, fontWeight = FontWeight.Bold)
             Text(text = "$${item.itemPrice}", color = Color.Black)
+            Spacer(modifier = Modifier.height(8.dp))
         }
     }
 }
