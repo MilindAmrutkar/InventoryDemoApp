@@ -37,11 +37,15 @@ fun ItemListScreen(viewModel: ItemViewModel) {
                     Row(
                         modifier = Modifier
                             .fillMaxWidth()
-                            .padding(8.dp)
+                            .padding(horizontal = 8.dp)
                     ) {
-                        rowItems.forEach { item ->
-                            ItemRow(item = item)
-                            Spacer(modifier = Modifier.width(8.dp))
+                        rowItems.forEachIndexed { index, item ->
+                            if (index > 0) Spacer(modifier = Modifier.width(8.dp))
+                            ItemRow(item = item,
+                                modifier = Modifier
+                                    .fillMaxWidth(0.5f)
+                                    .then(Modifier.padding(end = 8.dp))
+                            )
                         }
                     }
                 }
