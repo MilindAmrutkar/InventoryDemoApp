@@ -7,7 +7,7 @@ import com.backtocoding.inventorydemoapp.domain.entities.ItemEntity
 class FetchItemsUseCase(
     private val repository: ItemRepository
 ) : UseCase<List<ItemEntity>, Unit> {
-    override suspend fun invoke(params: Unit): List<ItemEntity> {
+    override suspend fun invoke(): List<ItemEntity> {
         return repository.fetchItems()
     }
 }
