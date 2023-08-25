@@ -1,4 +1,8 @@
 package com.backtocoding.inventorydemoapp.domain.entities
 
-class ItemEntity {
-}
+data class ItemEntity(
+    val itemName: String,
+    val itemPrice: Int,
+    val itemBarcode: String,
+    val imageUrl: String
+)
