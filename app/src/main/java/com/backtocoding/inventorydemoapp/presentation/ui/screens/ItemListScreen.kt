@@ -2,11 +2,9 @@ package com.backtocoding.inventorydemoapp.presentation.ui.screens
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.material3.CircularProgressIndicator
@@ -37,15 +35,16 @@ fun ItemListScreen(viewModel: ItemViewModel) {
                     Row(
                         modifier = Modifier
                             .fillMaxWidth()
-                            .padding(horizontal = 8.dp)
+                            .padding(8.dp)
                     ) {
                         rowItems.forEachIndexed { index, item ->
-                            if (index > 0) Spacer(modifier = Modifier.width(8.dp))
-                            ItemRow(item = item,
+                            Box(
                                 modifier = Modifier
-                                    .fillMaxWidth(0.5f)
-                                    .then(Modifier.padding(end = 8.dp))
-                            )
+                                    .weight(1f)
+                                    .padding(end = if (index == 0) 8.dp else 0.dp)
+                            ) {
+                                ItemRow(item = item)
+                            }
                         }
                     }
                 }
